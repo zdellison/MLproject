@@ -1,0 +1,9 @@
+
+Information about what files come from which queries etc.
+
+This way we can keep track of what's what and what time slot it's coming from.
+
+------------------------------------------------------------------------------
+DATA:
+
+tweet_file2.txt and full_tweets2.py: Ran 2014-11-13, ran with query 'stanford until:2014-11-12' and max_tweets = 500000, last queried tweet: 2014-11-06 01:35:16
