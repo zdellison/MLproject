@@ -19,7 +19,7 @@ timeBuckets = {}
 totalRetweetsTimeBuckets = {}
 maxtweet=0
 ########################## seconds in each bucket. 900=15min, 1800=30min, 3600=1hr
-step = 900
+step = 1800
 ##########################
 for line in data:
 	numTweets+=1
@@ -27,11 +27,11 @@ for line in data:
 	#print "Line is: ",line
 	pstSecs = line['created_at']-shift
 	secs= pstSecs%secsInDay
-	
 	# if line['retweets']>fltr:
 	# 	continue
-	# if line['retweets']>0:
-	# 	numRetweeted+=1
+	if line['retweets']>0:
+		numRetweeted+=1
+		print line
 	# if line['retweets']>maxtweet:
 	# 	maxtweet=line['retweets']
 	for i in range(secsInDay/step):
@@ -121,6 +121,6 @@ ax1.fmt_xdata = DateFormatter('%H')
 fig.autofmt_xdate()
 ax1.legend()
 plt.show()
-
-print "Retweet rate: ",numRetweeted/numTweets
+print '############'
+print "RETWEET RATE: ",numRetweeted/numTweets
 json_data.close()
