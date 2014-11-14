@@ -7,3 +7,36 @@ This way we can keep track of what's what and what time slot it's coming from.
 DATA:
 
 tweet_file2.txt and full_tweets2.py: Ran 2014-11-13, ran with query 'stanford until:2014-11-12' and max_tweets = 500000, last queried tweet: 2014-11-06 01:35:16
+tweet_train.txt, tweet_test.txt and full_tweets2.py (oops overwrote the last one), ran with query 'stanford until:2014-11-12 and max_tweets = 5000000,
+Query:  stanford -RT until:2014-11-13
+Count:  100
+max_tweets:  100
+Train File:  train_file.txt
+Test File:  test_file.txt
+Full Tweet File:  full_tweets.txt
+Training Size: 90
+Testing Size:  10
+Last Created:  2014-11-12 23:23:02
+
+New Twitter API Query: 
+Query:  stanford -RT until:2014-11-13
+Count:  100
+max_tweets:  100
+Train File:  train_file.txt
+Test File:  test_file.txt
+Full Tweet File:  full_tweets.txt
+Training Size: 90
+Testing Size:  10
+Last Created:  2014-11-12 23:23:02
+
+New Twitter API Query: 
+Query:  stanford -RT until:2014-11-13
+Count:  100
+max_tweets:  100000
+Train File:  train_file.txt
+Test File:  test_file.txt
+Full Tweet File:  full_tweets.txt
+Max retries reached. Sleeping for: 547
+Training Size: 17806
+Testing Size:  1978
+Last Created:  2014-11-07 01:19:15

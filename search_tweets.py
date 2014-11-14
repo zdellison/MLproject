@@ -10,22 +10,35 @@ import argparse
 import time,datetime
 
 # ---------------- Query Parameters ----------------------
-query = 'stanford until:2014-11-12'
+query = 'stanford -RT until:2014-11-13'
 count = 100
-max_tweets = 500000
+max_tweets = 100000
+train_file = 'train_file.txt'
+test_file = 'test_file.txt'
+full_tweet_file = 'full_tweets.txt'
+keyfile = 'twitter_keyfile.txt'
 # --------------------------------------------------------
+
+print
+print "New Twitter API Query: "
+print "Query: ",query
+print "Count: ",count
+print "max_tweets: ",max_tweets
+print "Train File: ",train_file
+print "Test File: ",test_file
+print "Full Tweet File: ",full_tweet_file
 
 # loop through SearchResult objects in search and print to file 'tweet_file.txt'
 def output_tweets(tr,te,full_tweets):
     # file to write to
-    train_file = open('../data/train_file.txt','w')
-    train_file.write(json.dumps(tr))
-    train_file.close()
-    test_file = open('../data/test_tweets.txt','w')
-    test_file.write(json.dumps(te))
-    test_file.close()
+    tr_file = open('../data/'+train_file,'w')
+    tr_file.write(json.dumps(tr))
+    tr_file.close()
+    te_file = open('../data/'+test_file,'w')
+    te_file.write(json.dumps(te))
+    te_file.close()
 
-    f2 = open('../data/full_tweets2.txt','w')
+    f2 = open('../data/'+full_tweet_file,'w')
     for tweet in full_tweets:
         f2.write(str(tweet))
     f2.close()
@@ -35,6 +48,7 @@ def process_tweets(s):
     train = []
     test = []
     tweet_num = 0
+    last_created = ''
     for t in s:
         tweet = {}
         tweet['created_at'] = time.mktime(t.created_at.timetuple())
@@ -50,28 +64,28 @@ def process_tweets(s):
         tweet['retweets'] = t.retweet_count
         tweet['favorites'] = t.favorite_count
         if tweet_num%10==9:
-            test.append(t)
+            test.append(tweet)
         else:
-            train.append(t)
-        print t.created_at
+            train.append(tweet)
+        last_created = t.created_at
         tweet_num+=1
-    output_tweets(list_tweets,s)
+    print "Training Size: {0}".format(len(train))
+    print "Testing Size: ",len(test)
+    print "Last Created: ",last_created
+    output_tweets(train,test,s)
    
 # set up the argument parser
 
-print "Setting up arg parser"
-
 parser = argparse.ArgumentParser(description='Fetch data with Twitter Streaming API')
-parser.add_argument('--keyfile', help='file with user credentials', required=True)
+parser.add_argument('--keyfile', help='file with user credentials')
 parser.add_argument('--filter', metavar='W', nargs='*', help='space-separated list of words; tweets are returned that match any word in the list')
 args = parser.parse_args()
 
 # read twitter app credentials
 
-print "Read app credentials"
-
+if args.keyfile: keyfile=args.keyfile
 creds = {}
-for line in open(args.keyfile, 'r'):
+for line in open(keyfile, 'r'):
     key, value = line.rstrip().split()
     creds[key] = value
 
@@ -86,7 +100,6 @@ api = API(auth,wait_on_rate_limit=True,wait_on_rate_limit_notify=True)
 searched_tweets = []
 last_id = -1
 while len(searched_tweets) < max_tweets:
-    print "Querying tweets: {0}".format(len(searched_tweets))
     try:
         new_tweets = api.search(q=query,count=count,max_id=str(last_id-1))
         if not new_tweets:
