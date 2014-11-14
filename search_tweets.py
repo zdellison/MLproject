@@ -16,18 +16,25 @@ max_tweets = 500000
 # --------------------------------------------------------
 
 # loop through SearchResult objects in search and print to file 'tweet_file.txt'
-def output_tweets(s,full_tweets):
+def output_tweets(tr,te,full_tweets):
     # file to write to
-    f = open('tweet_file2.txt','w')
-    f.write(json.dumps(s))
-    f.close()
-    f2 = open('full_tweets2.txt','w')
-    f2.write(str(full_tweets))
+    train_file = open('../data/train_file.txt','w')
+    train_file.write(json.dumps(tr))
+    train_file.close()
+    test_file = open('../data/test_tweets.txt','w')
+    test_file.write(json.dumps(te))
+    test_file.close()
+
+    f2 = open('../data/full_tweets2.txt','w')
+    for tweet in full_tweets:
+        f2.write(str(tweet))
     f2.close()
 
 # process tweets
 def process_tweets(s):
-    list_tweets = []
+    train = []
+    test = []
+    tweet_num = 0
     for t in s:
         tweet = {}
         tweet['created_at'] = time.mktime(t.created_at.timetuple())
@@ -42,9 +49,12 @@ def process_tweets(s):
         tweet['mentions'] = len(t.entities['user_mentions'])
         tweet['retweets'] = t.retweet_count
         tweet['favorites'] = t.favorite_count
-        list_tweets.append(tweet)
-#        print "Modified Tweet is: ",tweet
+        if tweet_num%10==9:
+            test.append(t)
+        else:
+            train.append(t)
         print t.created_at
+        tweet_num+=1
     output_tweets(list_tweets,s)
    
 # set up the argument parser
