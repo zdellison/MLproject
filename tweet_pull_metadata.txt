@@ -40,3 +40,28 @@ Max retries reached. Sleeping for: 547
 Training Size: 17806
 Testing Size:  1978
 Last Created:  2014-11-07 01:19:15
+
+New Twitter API Query: 
+Query:  california -RT until:2014-11-13
+Count:  100
+max_tweets:  18000
+Train File:  train_file2.txt
+Test File:  test_file2.txt
+Full Tweet File:  full_tweets2.txt
+Max retries reached. Sleeping for: 346
+Training Size: 16200
+Testing Size:  1800
+Last Created:  2014-11-12 17:18:56
+
+New Twitter API Query: 
+New Twitter API Query: Query: california -RT until:2014-11-13Count: 100max_tweets: 1000Train File: train_file3.txtTest File: test_file3.txtFull Tweet File: full_tweets3.txtTraining Size: 900Testing Size: 100Last Created: 2014-11-12 23:31:07
+New Twitter API Query: 
+Query: california -RT until:2014-11-13
+Count: 100
+max_tweets: 1000
+Train File: train_file3.txt
+Test File: test_file3.txt
+Full Tweet File: full_tweets3.txt
+Training Size: 900
+Testing Size: 100
+Last Created: 2014-11-12 23:31:07

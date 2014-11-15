@@ -10,23 +10,26 @@ import argparse
 import time,datetime
 
 # ---------------- Query Parameters ----------------------
-query = 'stanford -RT until:2014-11-13'
+query = 'california -RT until:2014-11-13'
 count = 100
-max_tweets = 100000
-train_file = 'train_file.txt'
-test_file = 'test_file.txt'
-full_tweet_file = 'full_tweets.txt'
+max_tweets = 1000000
+train_file = 'train_file4.txt'
+test_file = 'test_file4.txt'
+full_tweet_file = 'full_tweets4.txt'
 keyfile = 'twitter_keyfile.txt'
+logfile = 'tweet_pull_metadata.txt'
 # --------------------------------------------------------
 
-print
-print "New Twitter API Query: "
-print "Query: ",query
-print "Count: ",count
-print "max_tweets: ",max_tweets
-print "Train File: ",train_file
-print "Test File: ",test_file
-print "Full Tweet File: ",full_tweet_file
+log = open(logfile,'a')
+
+log.write("\n\n")
+log.write("New Twitter API Query: \n")
+log.write("Query: {0}\n".format(query))
+log.write("Count: {0}\n".format(count))
+log.write("max_tweets: {0}\n".format(max_tweets))
+log.write("Train File: {0}\n".format(train_file))
+log.write("Test File: {0}\n".format(test_file))
+log.write("Full Tweet File: {0}\n".format(full_tweet_file))
 
 # loop through SearchResult objects in search and print to file 'tweet_file.txt'
 def output_tweets(tr,te,full_tweets):
@@ -38,10 +41,8 @@ def output_tweets(tr,te,full_tweets):
     te_file.write(json.dumps(te))
     te_file.close()
 
-    f2 = open('../data/'+full_tweet_file,'w')
     for tweet in full_tweets:
-        f2.write(str(tweet))
-    f2.close()
+        print str(tweet)
 
 # process tweets
 def process_tweets(s):
@@ -69,9 +70,9 @@ def process_tweets(s):
             train.append(tweet)
         last_created = t.created_at
         tweet_num+=1
-    print "Training Size: {0}".format(len(train))
-    print "Testing Size: ",len(test)
-    print "Last Created: ",last_created
+    log.write("Training Size: {0}\n".format(len(train)))
+    log.write("Testing Size: {0}\n".format(len(test)))
+    log.write("Last Created: {0}\n".format(last_created))
     output_tweets(train,test,s)
    
 # set up the argument parser
@@ -107,8 +108,9 @@ while len(searched_tweets) < max_tweets:
         searched_tweets.extend(new_tweets)
         last_id = new_tweets[-1].id
     except TweepError as error:
-        print error.message
+        log.write(error.message)
         break
 process_tweets(searched_tweets)
 
 
+log.close()
