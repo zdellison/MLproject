@@ -1,8 +1,9 @@
-file = 'tweet_file_3.txt'
+file = 'data_copy/train_file.txt'
 import matplotlib.pyplot as plt
 import datetime
 from matplotlib.dates import DayLocator, HourLocator, DateFormatter, drange
 from numpy import arange
+import math
 
 import json
 from pprint import pprint
@@ -18,11 +19,82 @@ numTweetsTimeBuckets = {}
 timeBuckets = {}
 totalRetweetsTimeBuckets = {}
 maxtweet=0
+numRetweetedLarge =0
+sumRetweets=0
+sumRetweetsLarge=0
 ########################## seconds in each bucket. 900=15min, 1800=30min, 3600=1hr
 step = 1800
+
+numfollowBuckets=10
+followerBuckets=[0]*(numfollowBuckets+1)
+fBCounts = [0]*(numfollowBuckets+1)
+followerStep=400
 ##########################
+numfriendBuckets = 15
+friendStep = 5
+friendExp=2
+friendBuckets=[0]*(numfriendBuckets+1)
+frCounts=[0]*(numfriendBuckets+1)
+######
+numstBuckets = 10
+stStep = 40
+stExp=4
+stBuckets=[0]*(numstBuckets+1)
+stCounts=[0]*(numstBuckets+1)
+########
+numlistBuckets = 6
+listStep = 2
+listExp=6
+listBuckets=[0]*(numlistBuckets+1)
+listCounts=[0]*(numlistBuckets+1)
+
 for line in data:
 	numTweets+=1
+
+
+
+
+	for i in range(numlistBuckets):
+		if (i)**listExp*listStep<=line['user_listed'] and (i+1)**listExp*listStep>line['user_listed']:
+			listBuckets[i]+=line['retweets']
+			listCounts[i]+=1.0
+	if (numlistBuckets-1)**listExp*listStep<=line['user_listed']:
+		listBuckets[numlistBuckets]+=line['retweets']
+		listCounts[numlistBuckets]+=1.0
+
+
+
+
+
+
+	for i in range(numstBuckets):
+		if (i)**stExp*stStep<=line['user_statuses_count'] and (i+1)**stExp*stStep>line['user_statuses_count']:
+			stBuckets[i]+=line['retweets']
+			stCounts[i]+=1.0
+	if (numstBuckets-1)**stExp*stStep<=line['user_statuses_count']:
+		stBuckets[numstBuckets]+=line['retweets']
+		stCounts[numstBuckets]+=1.0
+
+
+	for i in range(numfriendBuckets):
+		if (i)**friendExp*friendStep<=line['user_friends'] and (i+1)**friendExp*friendStep>line['user_friends']:
+			friendBuckets[i]+=line['retweets']
+			frCounts[i]+=1.0
+	if (numfriendBuckets-1)**friendExp*friendStep<=line['user_friends']:
+		friendBuckets[numfriendBuckets]+=line['retweets']
+		frCounts[numfriendBuckets]+=1.0
+
+
+	for i in range(numfollowBuckets):
+		if i**4*followerStep<=line['user_followers'] and (i+1)**4*followerStep>line['user_followers']:
+			followerBuckets[i]+=line['retweets']
+			fBCounts[i]+=1.0
+	if (numfollowBuckets-1)**4*followerStep<=line['user_followers']:
+		followerBuckets[numfollowBuckets]+=line['retweets']
+		fBCounts[numfollowBuckets]+=1.0
+	
+
+
 	#print ""
 	#print "Line is: ",line
 	pstSecs = line['created_at']-shift
@@ -31,7 +103,11 @@ for line in data:
 	# 	continue
 	if line['retweets']>0:
 		numRetweeted+=1
-		print line
+		sumRetweets+=line['retweets']
+
+	if line['retweets']>10:
+		numRetweetedLarge+=1
+		sumRetweetsLarge+=line['retweets']
 	# if line['retweets']>maxtweet:
 	# 	maxtweet=line['retweets']
 	for i in range(secsInDay/step):
@@ -55,6 +131,47 @@ for key in timeBuckets:
 	listversionAveTweets[key]=(totalRetweetsTimeBuckets[key]+0.0)/(timeBuckets[key]+0.0)
 	listversionTotTweets[key]=totalRetweetsTimeBuckets[key]
 	listversionTraffic[key]=timeBuckets[key]
+
+
+
+for i in range(numlistBuckets+1):
+	if listCounts[i]>0:
+		listBuckets[i]=(listBuckets[i]+0.0)/listCounts[i]
+print listBuckets
+plt.plot(listBuckets,label='Average Retweets VS Lists');
+plt.suptitle('Average Retweets VS Lists', fontsize=12)
+plt.show()
+x=1/0
+
+
+for i in range(numstBuckets+1):
+	if stCounts[i]>0:
+		stBuckets[i]=(stBuckets[i]+0.0)/stCounts[i]
+print stBuckets
+plt.plot(stBuckets,label='Average Retweets VS Friends');
+plt.suptitle('Average Retweets VS Statuses', fontsize=12)
+plt.show()
+
+
+
+for i in range(numfriendBuckets+1):
+	if frCounts[i]>0:
+		friendBuckets[i]=(friendBuckets[i]+0.0)/frCounts[i]
+print friendBuckets
+plt.plot(friendBuckets,label='Average Retweets VS Friends');
+plt.suptitle('Average Retweets VS Friends', fontsize=12)
+plt.show()
+
+
+
+for i in range(numfollowBuckets+1):
+	if fBCounts[i]>0:
+		followerBuckets[i]=(followerBuckets[i]+0.0)/fBCounts[i]
+print followerBuckets
+plt.plot(followerBuckets,label='Average Retweets VS Followers');
+plt.suptitle('Average Retweets VS Followers', fontsize=12)
+plt.show()
+
 
 
 
@@ -122,5 +239,10 @@ fig.autofmt_xdate()
 ax1.legend()
 plt.show()
 print '############'
+print 'num tweets', numTweets
+print "num retweeted ",numRetweeted 
+print 'num retweeted large',numRetweetedLarge
 print "RETWEET RATE: ",numRetweeted/numTweets
+print "sum retweets", sumRetweets
+print "sum retweets large", sumRetweetsLarge
 json_data.close()
