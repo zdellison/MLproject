@@ -1,4 +1,4 @@
-file = 'data_copy/train_file.txt'
+file = 'data_copy/test_file.txt'
 import matplotlib.pyplot as plt
 import datetime
 from matplotlib.dates import DayLocator, HourLocator, DateFormatter, drange
@@ -23,7 +23,7 @@ numRetweetedLarge =0
 sumRetweets=0
 sumRetweetsLarge=0
 ########################## seconds in each bucket. 900=15min, 1800=30min, 3600=1hr
-step = 1800
+step = 3600
 
 numfollowBuckets=10
 followerBuckets=[0]*(numfollowBuckets+1)
@@ -133,15 +133,18 @@ for key in timeBuckets:
 	listversionTraffic[key]=timeBuckets[key]
 
 
+ 
 
 for i in range(numlistBuckets+1):
 	if listCounts[i]>0:
 		listBuckets[i]=(listBuckets[i]+0.0)/listCounts[i]
 print listBuckets
+
 plt.plot(listBuckets,label='Average Retweets VS Lists');
-plt.suptitle('Average Retweets VS Lists', fontsize=12)
+
+plt.suptitle('Average Retweets VS Lists: \nNumber of Buckets: '+str(numlistBuckets)+', Step Size: '+str(listStep)+', Exponent: '+str(listExp), fontsize=12)
 plt.show()
-x=1/0
+
 
 
 for i in range(numstBuckets+1):
@@ -149,7 +152,7 @@ for i in range(numstBuckets+1):
 		stBuckets[i]=(stBuckets[i]+0.0)/stCounts[i]
 print stBuckets
 plt.plot(stBuckets,label='Average Retweets VS Friends');
-plt.suptitle('Average Retweets VS Statuses', fontsize=12)
+plt.suptitle('Average Retweets VS Statuses: \nNumber of Buckets: '+str(numstBuckets)+', Step Size: '+str(stStep)+', Exponent: '+str(stExp), fontsize=12)
 plt.show()
 
 
@@ -159,7 +162,7 @@ for i in range(numfriendBuckets+1):
 		friendBuckets[i]=(friendBuckets[i]+0.0)/frCounts[i]
 print friendBuckets
 plt.plot(friendBuckets,label='Average Retweets VS Friends');
-plt.suptitle('Average Retweets VS Friends', fontsize=12)
+plt.suptitle('Average Retweets VS Friends: \nNumber of Buckets: '+str(numfriendBuckets)+', Step Size: '+str(friendStep)+', Exponent: '+str(friendExp), fontsize=12)
 plt.show()
 
 
@@ -169,7 +172,7 @@ for i in range(numfollowBuckets+1):
 		followerBuckets[i]=(followerBuckets[i]+0.0)/fBCounts[i]
 print followerBuckets
 plt.plot(followerBuckets,label='Average Retweets VS Followers');
-plt.suptitle('Average Retweets VS Followers', fontsize=12)
+plt.suptitle('Average Retweets VS Followers: \nNumber of Buckets: '+str(numfollowBuckets)+', Step Size: '+str(followerStep)+', Exponent: '+str(4), fontsize=12)
 plt.show()
 
 
@@ -223,7 +226,7 @@ fig.autofmt_xdate()
 lns = lns1+lns2
 labs = [l.get_label() for l in lns]
 ax1.legend(lns, labs, loc=0)
-
+plt.suptitle('Total True Retweets per Time Bucket\nTest Data', fontsize=16)
 plt.show()
 fig, ax1 = plt.subplots()
 ax1.plot(dates,listversionTraffic, 'g.-',label = 'Total Traffic')
