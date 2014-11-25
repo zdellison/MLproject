@@ -43,46 +43,47 @@ def dotProduct(d1, d2):
     return ret
 
 def tweetFeatureExtractor(line):
+
+    features = {}
+
+    
+    if (numlistBuckets)**listExp*listStep<=line['user_listed']:
+        features['list_bucket_MAX']=1
+    else:
+        features['list_bucket_'+str((int)((line['user_listed']/listStep)**(1/(listExp+0.0))))]=1
+
+
+
+    if (numfriendBuckets)**friendExp*friendStep<=line['user_friends']:
+        features['friend_bucket_MAX']=1
+    else:
+        features['friend_bucket_'+str((int)((line['user_friends']/friendStep)**(1/(friendExp+0.0))))]=1
+
+
+
+    if (followerBuckets)**followerExp*followerStep<line['user_followers']:
+        features['follower_bucket_MAX']=1
+    else:
+        features['follower_bucket_'+str((int)((line['user_followers']/followerStep)**(1/(followerExp+0.0))))]=1
+
+
+            
+    if (favBuckets)**favExp*favStep<line['user_favourites']:
+        features['fav_bucket_MAX']=1
+    else:
+        features['fav_bucket_'+str((int)((line['user_favourites']/favStep)**(1/(favExp+0.0))))]=1
+   
+            
+
+    if (statusBuckets)**stExp*statusStep<line['user_statuses_count']:
+        features['user_statuses_count_MAX']=1
+    else:
+        features['user_statuses_count_'+str((int)((line['user_statuses_count']/statusStep)**(1/(stExp+0.0))))]=1
+
+
     pstSecs = line['created_at']-shift
     secs= pstSecs%secsInDay
-    features = {}
-    for i in range(secsInDay/step):
-        if i*step<secs and secs<(i+1)*step:
-            features['time_bucket_'+str(i)]=1#(totalRetweetsTimeBuckets[i]+0.0)/(timeBuckets[i]+0.0)
-    
-    
-    for i in range(numlistBuckets):
-        if (i)**listExp*listStep<=line['user_listed'] and (i+1)**listExp*listStep>line['user_listed']:
-            features['list_bucket_'+str(i)]=1
-    if (numlistBuckets-1)**listExp*listStep<=line['user_listed']:
-        features['list_bucket_MAX']=1
-
-
-
-    for i in range(numfriendBuckets):
-        if (i)**friendExp*friendStep<=line['user_friends'] and (i+1)**friendExp*friendStep>line['user_friends']:
-            features['friend_bucket_'+str(i)]=1
-    if (numfriendBuckets-1)**friendExp*friendStep<=line['user_friends']:
-        features['friend_bucket_MAX']=1
-
-
-    for i in range(followerBuckets):
-        if i**4*followerStep<line['user_followers'] and (i+1)**4*followerStep>=line['user_followers']:
-            features['follower_bucket_'+str(i)]=1
-    if (followerBuckets-1)**4*followerStep<line['user_followers']:
-        features['follower_bucket_MAX']=1
-
-    for i in range(favBuckets):
-        if i*favStep<line['user_favourites'] and (i+1)*favStep>line['user_favourites']:
-            features['fav_bucket_'+str(i)]=1
-    if (favBuckets-1)*favStep<line['user_favourites']:
-        features['fav_bucket_MAX']=1
-
-    for i in range(statusBuckets):
-        if i**stExp*statusStep<line['user_statuses_count'] and line['user_statuses_count']<(i+1)**stExp*statusStep:
-            features['user_statuses_count_'+str(i)]=1
-    if (statusBuckets-1)**stExp*statusStep<line['user_statuses_count']:
-        features['user_statuses_count_MAX']=1
+    features['time_bucket_'+str((int)(secs/step))]=1
     
     return features
 
@@ -106,7 +107,7 @@ def learnPredictor(trainExamples, testExamples, featureExtractor):
             #print residual**3
             for key in features:
                 if key in weights:
-                    weights[key]+=+alpha*residual*features[key]
+                    weights[key]+=alpha*residual*features[key]
                 else:
                     weights[key]=alpha*residual*features[key]
         iternum+=1
@@ -124,14 +125,16 @@ timeBuckets = {}
 ########################## seconds in each bucket. 900=15min, 1800=30min, 3600=1hr
 step = 3600
 ##########################
-numiters=6
+numiters=5
 alpha=.01
 #################
 followerBuckets=10
 followerStep=400
+followerExp = 4
 ################
-favBuckets=10
-favStep=40
+favBuckets=15
+favStep=20
+favExp=2
 ################
 numfriendBuckets = 15
 friendStep = 5
@@ -175,10 +178,14 @@ for line in test_data:
                 totRetweetsTimeBuckets[i]=predictor(line,weights)
 # print "TEST ERROR RATE: ",evaluatePredictor(testExamples,predictor)
 print weights
-# print ""
-# print tweetFeatureExtractor(testExamples[0][0])
-# print ""
-# print predictor(test_data[0],weights)
+print ""
+print tweetFeatureExtractor(testExamples[0][0])
+print ""
+print predictor(test_data[0],weights)
+print ""
+print test_data[0]
+print ""
+print testExamples[0]
 
 listversionTotTweets = [0]*(secsInDay/step)
 for key in totRetweetsTimeBuckets:
@@ -206,5 +213,5 @@ ax1.xaxis.set_major_formatter( DateFormatter('%H:%M') )
 
 ax1.fmt_xdata = DateFormatter('%H')
 fig.autofmt_xdate()
-plt.suptitle('Total Predicted Retweets per Time Bucket (Time Only)', fontsize=16)
+plt.suptitle('Total Predicted Retweets per Time Bucket\nTesting Data', fontsize=16)
 plt.show()
