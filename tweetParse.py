@@ -9,7 +9,7 @@ from pprint import pprint
 import time
 
 def getTrainExamples():  
-    trainf = 'data_copy/train_file.txt'
+    trainf = '../data/train_file.txt'
     json_data_tr = open(trainf)
     tr_data = json.loads(json_data_tr.readline())
     ret = []
@@ -17,7 +17,7 @@ def getTrainExamples():
         ret.append((line,line['retweets']))
     return ret
 def getTestExamples():
-    testf = 'data_copy/test_file.txt'
+    testf = '../data/test_file.txt'
     json_data_te = open(testf)
     te_data = json.loads(json_data_te.readline())
     ret=[]

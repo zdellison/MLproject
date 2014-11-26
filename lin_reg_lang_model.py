@@ -8,7 +8,8 @@ import json
 from pprint import pprint
 import time
 import tweetParse
-
+from textblob import TextBlob
+import collections
   
 
 def evaluatePredictor(examples, predictor):
@@ -80,6 +81,17 @@ def tweetFeatureExtractor(line):
     else:
         features['user_statuses_count_'+str((int)((line['user_statuses_count']/statusStep)**(1/(stExp+0.0))))]=1
 
+    
+    text = TextBlob(line['text'])
+#    features['sentiment']=text.sentiment.polarity
+#    features['subjectivity']=text.sentiment.subjectivity
+    tag_list = collections.Counter()
+    for word,tag in text.tags:
+        tag_list[tag]+=1.0
+    for tag,count in tag_list.items():
+        features['tag_'+tag]=count
+
+    
 
     pstSecs = line['created_at']-shift
     secs= pstSecs%secsInDay
@@ -99,6 +111,7 @@ def predictor(feat,weights):
 def learnPredictor(trainExamples, testExamples, featureExtractor):
     iternum=0
     while iternum<numiters: 
+#        non_zero_sent,sent_total = 0.0,0.0
         for x,y in trainExamples:
             features = featureExtractor(x)         
             score = dotProduct(features,weights)
@@ -106,11 +119,16 @@ def learnPredictor(trainExamples, testExamples, featureExtractor):
             #print residual 
             #print residual**3
             for key in features:
+#                if key is 'sentiment':
+#                    if features[key] != 0.0:
+#                        non_zero_sent += 1.0
+#                    sent_total += 1.0
                 if key in weights:
                     weights[key]+=alpha*residual*features[key]
                 else:
                     weights[key]=alpha*residual*features[key]
         iternum+=1
+#        print "Non-Zero Sentiment Percentage:",non_zero_sent/sent_total
         print 'Iteration number: '+str(iternum)+', train mean squared error = '+str(evaluatePredictor(trainExamples,predictor))+', test error = '+str(evaluatePredictor(testExamples,predictor))
 
     return weights
