@@ -17,8 +17,8 @@ def evaluatePredictor(examples, predictor):
     for x, y in examples:
         count+=1
         totalSquaredError+=(predictor(x,weights)-y)**2
-        if predictor(x,weights)>20:
-           print "Predicted ",predictor(x,weights)," when truth is ",y
+        # if predictor(x,weights)>20:
+        #    print "Predicted ",predictor(x,weights)," when truth is ",y
         
         # if abs(predictor(x,weights)-y)>1:
         #     error += 1
@@ -74,7 +74,7 @@ def tweetFeatureExtractor(line):
         features['fav_bucket_'+str((int)((line['user_favourites']/favStep)**(1/(favExp+0.0))))]=1
    
             
-
+            
     if (statusBuckets)**stExp*statusStep<line['user_statuses_count']:
         features['user_statuses_count_MAX']=1
     else:
@@ -83,6 +83,11 @@ def tweetFeatureExtractor(line):
 
     pstSecs = line['created_at']-shift
     secs= pstSecs%secsInDay
+    toBeAdded = {}
+    for key in features:
+        toBeAdded['time_bucket_'+str((int)(secs/step))+'_'+key]=1
+    for key in toBeAdded:
+        features[key]=toBeAdded[key]
     features['time_bucket_'+str((int)(secs/step))]=1
     
     return features
@@ -125,7 +130,7 @@ timeBuckets = {}
 ########################## seconds in each bucket. 900=15min, 1800=30min, 3600=1hr
 step = 3600
 ##########################
-numiters=5
+numiters=10
 alpha=.01
 #################
 followerBuckets=10
