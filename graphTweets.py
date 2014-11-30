@@ -1,4 +1,4 @@
-file = 'data_copy/test_file.txt'
+file = '../data/test_file.txt'
 import matplotlib.pyplot as plt
 import datetime
 from matplotlib.dates import DayLocator, HourLocator, DateFormatter, drange

@@ -10,7 +10,20 @@ import time
 import tweetParse
 from textblob import TextBlob
 import collections
-  
+
+
+languageModel = True
+userModel = True
+timeModel = True
+
+id_num= 0
+cache = {}
+
+# Print which models are being used:
+
+if timeModel: print "Using Time Model"
+if userModel: print "Using User Model"
+if languageModel: print "Using Language Model"
 
 def evaluatePredictor(examples, predictor):
     totalSquaredError = 0.0
@@ -20,7 +33,8 @@ def evaluatePredictor(examples, predictor):
         totalSquaredError+=(predictor(x,weights)-y)**2
         if predictor(x,weights)>20:
            print "Predicted ",predictor(x,weights)," when truth is ",y
-        
+        if (predictor(x,weights)-y)**2>100:
+            print "Error Greater than 30, Predicted: ",predictor(x,weights)," when truth is ",y
         # if abs(predictor(x,weights)-y)>1:
         #     error += 1
             #print "--------ERROR------------"
@@ -43,65 +57,88 @@ def dotProduct(d1, d2):
 
     return ret
 
-def tweetFeatureExtractor(line):
-
+def tweetFeatureExtractor(line,id_num):
+    id_num +=1
     features = {}
 
+    if userModel:    
+        if (numlistBuckets)**listExp*listStep<=line['user_listed']:
+            features['list_bucket_MAX']=1
+        else:
+            features['list_bucket_'+str((int)((line['user_listed']/listStep)**(1/(listExp+0.0))))]=1
     
-    if (numlistBuckets)**listExp*listStep<=line['user_listed']:
-        features['list_bucket_MAX']=1
-    else:
-        features['list_bucket_'+str((int)((line['user_listed']/listStep)**(1/(listExp+0.0))))]=1
-
-
-
-    if (numfriendBuckets)**friendExp*friendStep<=line['user_friends']:
-        features['friend_bucket_MAX']=1
-    else:
-        features['friend_bucket_'+str((int)((line['user_friends']/friendStep)**(1/(friendExp+0.0))))]=1
-
-
-
-    if (followerBuckets)**followerExp*followerStep<line['user_followers']:
-        features['follower_bucket_MAX']=1
-    else:
-        features['follower_bucket_'+str((int)((line['user_followers']/followerStep)**(1/(followerExp+0.0))))]=1
-
-
-            
-    if (favBuckets)**favExp*favStep<line['user_favourites']:
-        features['fav_bucket_MAX']=1
-    else:
-        features['fav_bucket_'+str((int)((line['user_favourites']/favStep)**(1/(favExp+0.0))))]=1
-   
-            
-
-    if (statusBuckets)**stExp*statusStep<line['user_statuses_count']:
-        features['user_statuses_count_MAX']=1
-    else:
-        features['user_statuses_count_'+str((int)((line['user_statuses_count']/statusStep)**(1/(stExp+0.0))))]=1
-
     
-    text = TextBlob(line['text'])
-#    features['sentiment']=text.sentiment.polarity
-#    features['subjectivity']=text.sentiment.subjectivity
-    tag_list = collections.Counter()
-    for word,tag in text.tags:
-        tag_list[tag]+=1.0
-    for tag,count in tag_list.items():
-        features['tag_'+tag]=count
-
     
-
-    pstSecs = line['created_at']-shift
-    secs= pstSecs%secsInDay
-    features['time_bucket_'+str((int)(secs/step))]=1
+        if (numfriendBuckets)**friendExp*friendStep<=line['user_friends']:
+            features['friend_bucket_MAX']=1
+        else:
+            features['friend_bucket_'+str((int)((line['user_friends']/friendStep)**(1/(friendExp+0.0))))]=1
     
+    
+    
+        if (followerBuckets)**followerExp*followerStep<line['user_followers']:
+            features['follower_bucket_MAX']=1
+        else:
+            features['follower_bucket_'+str((int)((line['user_followers']/followerStep)**(1/(followerExp+0.0))))]=1
+    
+    
+                
+        if (favBuckets)**favExp*favStep<line['user_favourites']:
+            features['fav_bucket_MAX']=1
+        else:
+            features['fav_bucket_'+str((int)((line['user_favourites']/favStep)**(1/(favExp+0.0))))]=1
+       
+                
+    
+        if (statusBuckets)**stExp*statusStep<line['user_statuses_count']:
+            features['user_statuses_count_MAX']=1
+        else:
+            features['user_statuses_count_'+str((int)((line['user_statuses_count']/statusStep)**(1/(stExp+0.0))))]=1
+
+    if languageModel:    
+        text = TextBlob(line['text'])
+    
+        sent = text.sentiment.polarity
+        if sent==0: features['sentiment_zero']=1
+        if 0<sent<=0.5: features['sentiment_positive']=1
+        if 0.5<sent: features['sentiment_strong_positive']=1
+        if 0>sent>=-0.5: features['sentiment_negative']=1
+        if -0.5>sent: features['sentiment_strong_negative']=1
+        subj =text.sentiment.subjectivity
+        if subj==0: features['subjectivity_zero']=1
+        if 0<subj<=0.5: features['subjectivity_objective']=1
+        if 0.5<subj: features['subjectivity_subjective']=1
+    
+#        tag_list = []
+#        for word,tag in text.tags:
+#            if tag not in tag_list: tag_list.append(tag)
+#        for tag in tag_list: features['tag_'+tag]=1
+    
+        tag_list = collections.Counter()
+        for word,tag in text.tags:
+            tag_list[tag]+=1.0
+        for tag,count in tag_list.items():
+            if count==0: features['tag_'+tag+'_'+'0']=1
+            if 0<count<=5: features['tag_'+tag+'_1-5']=1
+            if 5<count<=10: features['tag_'+tag+'_6-10']=1
+            if 10<count: features['tag_'+tag+'10+']=1
+    
+    
+    if timeModel:
+        pstSecs = line['created_at']-shift
+        secs= pstSecs%secsInDay
+        features['time_bucket_'+str((int)(secs/step))]=1
+    
+#    if id_num in cache: 
+#        return cache[id_num]
+#    else:
+#        cache[id_num]=features
+#        return cache[id_num]
     return features
 
 def predictor(feat,weights): 
    
-    dot= dotProduct(tweetFeatureExtractor(feat),weights)
+    dot= dotProduct(tweetFeatureExtractor(feat,id_num),weights)
     if dot<0: 
         return 0
     else:
@@ -113,7 +150,7 @@ def learnPredictor(trainExamples, testExamples, featureExtractor):
     while iternum<numiters: 
 #        non_zero_sent,sent_total = 0.0,0.0
         for x,y in trainExamples:
-            features = featureExtractor(x)         
+            features = featureExtractor(x,id_num)         
             score = dotProduct(features,weights)
             residual = (y-score)
             #print residual 
@@ -129,7 +166,10 @@ def learnPredictor(trainExamples, testExamples, featureExtractor):
                     weights[key]=alpha*residual*features[key]
         iternum+=1
 #        print "Non-Zero Sentiment Percentage:",non_zero_sent/sent_total
-        print 'Iteration number: '+str(iternum)+', train mean squared error = '+str(evaluatePredictor(trainExamples,predictor))+', test error = '+str(evaluatePredictor(testExamples,predictor))
+        print '================ TRAIN SET: Iteration '+str(iternum)+' ================'
+        print 'Iteration number: '+str(iternum)+', train mean squared error = '+str(evaluatePredictor(trainExamples,predictor))
+        print '================ TEST SET ================='
+        print 'Test error = '+str(evaluatePredictor(testExamples,predictor))
 
     return weights
 
@@ -197,7 +237,7 @@ for line in test_data:
 # print "TEST ERROR RATE: ",evaluatePredictor(testExamples,predictor)
 print weights
 print ""
-print tweetFeatureExtractor(testExamples[0][0])
+print tweetFeatureExtractor(testExamples[0][0],id_num)
 print ""
 print predictor(test_data[0],weights)
 print ""
