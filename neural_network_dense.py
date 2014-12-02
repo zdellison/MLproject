@@ -205,19 +205,16 @@ def learnPredictor(trainExamples, testExamples, featureExtractor):
             delta.append([-(y-activations[numLevels].item(0))*dsigmoid(z[numLevels]).item(0)])
             #compute preceeding deltas
             for l in range(numLevels,0,-1): #iterate over levels backwards
-                delta[l-1]=(np.multiply(W[l].T*np.matrix(delta[l]),dsigmoid(z[l])))
+                delta[l-1]=(np.multiply(W[l].T*np.matrix(delta[l]),dsigmoid(z[l-1])))
            
             ##################
             #compute all gradients W_l and gradients b_l
             gradW =[]
             for l in range(0,numLevels+1):
                 gradW.append(delta[l]*activations[l].T)
-            ##This following line is my experiment, I could not find in the tutorial information about
-            ##changing dimensionality on this level.
-            gradW[numLevels]=gradW[numLevels]*features
 
             #calculate gradb
-            gradb = [activations[i].T for i in range(0,numLevels+1)]
+            gradb = [np.matrix(delta[i]).T for i in range(0,numLevels+1)]
 
             #################
             #apply gradient to deltaW
@@ -233,7 +230,7 @@ def learnPredictor(trainExamples, testExamples, featureExtractor):
         m=len(trainExamples)
         #update all levels of W
         for l in range(numLevels+1):
-            W[l]-=learningRate*((1.0/m)*deltaW[l]+lambdaDecay*np.matrix(W[l]))
+            W[l]-=learningRate*((1.0/m)*deltaW[l]+lambdaDecay*W[l])
 
         #update all levels of b
         b=[b[l]-learningRate*((1.0/m)*deltab[l]) for l in range(numLevels+1)]
@@ -277,7 +274,7 @@ numiters=1000
 trainfile = 'data_copy/experimental_tweets.txt'
 json_data_train = open(trainfile)
 train_data = json.loads(json_data_train.readline())
-testfile = 'data_copy/test_file.txt'
+testfile = 'data_copy/experimental_tweets.txt'
 json_data_test = open(testfile)
 test_data = json.loads(json_data_test.readline())
 #################
@@ -306,6 +303,7 @@ learningRate=0.1
 trainExamples=tweetParse.getTrainExamples()
 testExamples= tweetParse.getTestExamples()    
 
+print trainExamples
 learnPredictor(trainExamples,testExamples,tweetFeatureExtractor)
 
 
