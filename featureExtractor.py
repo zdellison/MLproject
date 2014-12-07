@@ -168,7 +168,7 @@ def FeatureExtractor(k,languageModel=True,userModel=True,timeModel=True):
             else:
                 classifier_y_list.append(1)
 
-                non_zero_feature_list.append([line])
+                non_zero_feature_list.append(features[line])
                 non_zero_y_list.append(y[line])
         partitioned_data[idx] = ((features,y),(features,classifier_y_list),(non_zero_feature_list,non_zero_y_list))
    
@@ -178,39 +178,4 @@ def FeatureExtractor(k,languageModel=True,userModel=True,timeModel=True):
 
 
 
-
-# TODO: Implement languageModel feature extraction:
-
-
-    #def tweetFeatureExtractor(partitions[idx]):
-    #    features = {}
-    #
-    #    if languageModel:    
-    #        text = TextBlob(partitions[idx]['text'])
-    #    
-    #        sent = text.sentiment.polarity
-    #        if sent==0: features['sentiment_zero']=1
-    #        if 0<sent<=0.5: features['sentiment_positive']=1
-    #        if 0.5<sent: features['sentiment_strong_positive']=1
-    #        if 0>sent>=-0.5: features['sentiment_negative']=1
-    #        if -0.5>sent: features['sentiment_strong_negative']=1
-    #        subj =text.sentiment.subjectivity
-    #        if subj==0: features['subjectivity_zero']=1
-    #        if 0<subj<=0.5: features['subjectivity_objective']=1
-    ##        tag_list = []
-    ##        for word,tag in text.tags:
-    ##            if tag not in tag_list: tag_list.append(tag)
-    ##        for tag in tag_list: features['tag_'+tag]=1
-    #    
-    #        tag_list = collections.Counter()
-    #        for word,tag in text.tags:
-    #            tag_list[tag]+=1.0
-    #        for tag,count in tag_list.items():
-    #            if count==0: features['tag_'+tag+'_'+'0']=1
-    #            if 0<count<=5: features['tag_'+tag+'_1-5']=1
-    #            if 5<count<=10: features['tag_'+tag+'_6-10']=1
-    #            if 10<count: features['tag_'+tag+'10+']=1
-    #    return features
-    
-      
                       

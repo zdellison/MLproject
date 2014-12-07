@@ -1,0 +1,718 @@
+Using user model
+Using time model
+============================================================
+                 Support Vector Regression                   
+============================================================
+-------- Fold:  0  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  0 , we have Error:  34.0041561359
+Percent of Zero Retweets predicted correctly:  0.97707597479
+Percent of Non-Zero Retweets predicted correctly:  0.0536740771522
+----------- Test Regression Errors ------------
+For Fold Number:  0 , we have Error:  9.11015664477
+Percent of Zero Retweets predicted correctly:  0.96679197995
+Percent of Non-Zero Retweets predicted correctly:  0.0538847117794
+Naive Baseline Error:  11.6680141486
+-------- Fold:  1  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  1 , we have Error:  16.9418140972
+Percent of Zero Retweets predicted correctly:  0.977225529558
+Percent of Non-Zero Retweets predicted correctly:  0.0514329226083
+----------- Test Regression Errors ------------
+For Fold Number:  1 , we have Error:  163.754926731
+Percent of Zero Retweets predicted correctly:  0.979861548143
+Percent of Non-Zero Retweets predicted correctly:  0.0553807426054
+Naive Baseline Error:  171.389590702
+-------- Fold:  2  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  2 , we have Error:  31.6890199382
+Percent of Zero Retweets predicted correctly:  0.977819366466
+Percent of Non-Zero Retweets predicted correctly:  0.0521938032855
+----------- Test Regression Errors ------------
+For Fold Number:  2 , we have Error:  32.3946437595
+Percent of Zero Retweets predicted correctly:  0.970771144279
+Percent of Non-Zero Retweets predicted correctly:  0.0522388059701
+Naive Baseline Error:  36.945932289
+-------- Fold:  3  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  3 , we have Error:  34.0611625948
+Percent of Zero Retweets predicted correctly:  0.971539636263
+Percent of Non-Zero Retweets predicted correctly:  0.0603220880189
+----------- Test Regression Errors ------------
+For Fold Number:  3 , we have Error:  7.99646286003
+Percent of Zero Retweets predicted correctly:  0.966236955187
+Percent of Non-Zero Retweets predicted correctly:  0.0454266421117
+Naive Baseline Error:  10.6932794341
+-------- Fold:  4  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  4 , we have Error:  34.2497472762
+Percent of Zero Retweets predicted correctly:  0.979225815387
+Percent of Non-Zero Retweets predicted correctly:  0.0515199778409
+----------- Test Regression Errors ------------
+For Fold Number:  4 , we have Error:  9.39635995956
+Percent of Zero Retweets predicted correctly:  0.968632371393
+Percent of Non-Zero Retweets predicted correctly:  0.0495608531995
+Naive Baseline Error:  13.3311425683
+-------- Fold:  5  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  5 , we have Error:  34.7659215995
+Percent of Zero Retweets predicted correctly:  0.978375381203
+Percent of Non-Zero Retweets predicted correctly:  0.0544080953701
+----------- Test Regression Errors ------------
+For Fold Number:  5 , we have Error:  3.43124368049
+Percent of Zero Retweets predicted correctly:  0.973242065961
+Percent of Non-Zero Retweets predicted correctly:  0.045426260112
+Naive Baseline Error:  5.23255813953
+-------- Fold:  6  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  6 , we have Error:  32.5971021004
+Percent of Zero Retweets predicted correctly:  0.975709625928
+Percent of Non-Zero Retweets predicted correctly:  0.0563536678465
+----------- Test Regression Errors ------------
+For Fold Number:  6 , we have Error:  22.0187057634
+Percent of Zero Retweets predicted correctly:  0.964944649446
+Percent of Non-Zero Retweets predicted correctly:  0.0412054120541
+Naive Baseline Error:  23.5808897877
+-------- Fold:  7  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  7 , we have Error:  33.4253060766
+Percent of Zero Retweets predicted correctly:  0.978135628514
+Percent of Non-Zero Retweets predicted correctly:  0.0518497952384
+----------- Test Regression Errors ------------
+For Fold Number:  7 , we have Error:  15.7366026289
+Percent of Zero Retweets predicted correctly:  0.972972972973
+Percent of Non-Zero Retweets predicted correctly:  0.04914004914
+Naive Baseline Error:  18.5015166835
+-------- Fold:  8  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  8 , we have Error:  31.5973267438
+Percent of Zero Retweets predicted correctly:  0.978000691802
+Percent of Non-Zero Retweets predicted correctly:  0.0498789346247
+----------- Test Regression Errors ------------
+For Fold Number:  8 , we have Error:  31.2472194135
+Percent of Zero Retweets predicted correctly:  0.980379746835
+Percent of Non-Zero Retweets predicted correctly:  0.0563291139241
+Naive Baseline Error:  34.5874620829
+-------- Fold:  9  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  9 , we have Error:  31.9596203527
+Percent of Zero Retweets predicted correctly:  0.978418759079
+Percent of Non-Zero Retweets predicted correctly:  0.0502870581725
+----------- Test Regression Errors ------------
+For Fold Number:  9 , we have Error:  27.3159757331
+Percent of Zero Retweets predicted correctly:  0.972116603295
+Percent of Non-Zero Retweets predicted correctly:  0.0557667934094
+Naive Baseline Error:  30.6476238625
+==================== SUMMARY ==================
+Total Error:  32.2402297174
+Percent Zero Retweets predicted correctly:  0.971595003746
+Percent Non-Zero Retweets predicted correctly:  0.0504359384306
+Zero Errors:  0.088916708046
+Non Zero Errors:  166.199251437
+Naive Predictor Error:  35.6578009698
+Naive Predictor Zero Errors:  0.0
+Naive Predictor Non Zero Errors:  184.460548923
+Total Train Error:  31.5291176915
+Train Zero Errors:  0.0525807483835
+Train Non-Zero Errors:  166.115246994
+Train Zero Retweet Percent Correct:  0.977152640899
+Train Non Zero Retweet Percent Correct:  0.0504359384306
+============================================================
+                 Least Squares Regression                   
+============================================================
+-------- Fold:  0  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  0 , we have Error:  32.8949733221
+Percent of Zero Retweets predicted correctly:  0.528984001662
+Percent of Non-Zero Retweets predicted correctly:  0.171687790013
+----------- Test Regression Errors ------------
+For Fold Number:  0 , we have Error:  7.62405255179
+Percent of Zero Retweets predicted correctly:  0.53007518797
+Percent of Non-Zero Retweets predicted correctly:  0.176065162907
+Naive Baseline Error:  11.6680141486
+-------- Fold:  1  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  1 , we have Error:  15.5937096321
+Percent of Zero Retweets predicted correctly:  0.590267201994
+Percent of Non-Zero Retweets predicted correctly:  0.164959158244
+----------- Test Regression Errors ------------
+For Fold Number:  1 , we have Error:  165.193532087
+Percent of Zero Retweets predicted correctly:  0.598489616111
+Percent of Non-Zero Retweets predicted correctly:  0.178728760227
+Naive Baseline Error:  171.389590702
+-------- Fold:  2  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  2 , we have Error:  30.5180567256
+Percent of Zero Retweets predicted correctly:  0.538850765925
+Percent of Non-Zero Retweets predicted correctly:  0.169265959659
+----------- Test Regression Errors ------------
+For Fold Number:  2 , we have Error:  30.2465891865
+Percent of Zero Retweets predicted correctly:  0.547885572139
+Percent of Non-Zero Retweets predicted correctly:  0.177860696517
+Naive Baseline Error:  36.945932289
+-------- Fold:  3  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  3 , we have Error:  32.5574276889
+Percent of Zero Retweets predicted correctly:  0.530959322505
+Percent of Non-Zero Retweets predicted correctly:  0.17319172567
+----------- Test Regression Errors ------------
+For Fold Number:  3 , we have Error:  11.8610409298
+Percent of Zero Retweets predicted correctly:  0.545119705341
+Percent of Non-Zero Retweets predicted correctly:  0.151626764886
+Naive Baseline Error:  10.6932794341
+-------- Fold:  4  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  4 , we have Error:  32.8071436594
+Percent of Zero Retweets predicted correctly:  0.539713316252
+Percent of Non-Zero Retweets predicted correctly:  0.170902292085
+----------- Test Regression Errors ------------
+For Fold Number:  4 , we have Error:  8.43983822042
+Percent of Zero Retweets predicted correctly:  0.522584692597
+Percent of Non-Zero Retweets predicted correctly:  0.16373902133
+Naive Baseline Error:  13.3311425683
+-------- Fold:  5  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  5 , we have Error:  33.0729529372
+Percent of Zero Retweets predicted correctly:  0.527030773496
+Percent of Non-Zero Retweets predicted correctly:  0.173204879401
+----------- Test Regression Errors ------------
+For Fold Number:  5 , we have Error:  6.96966632963
+Percent of Zero Retweets predicted correctly:  0.54573739888
+Percent of Non-Zero Retweets predicted correctly:  0.164281269446
+Naive Baseline Error:  5.23255813953
+-------- Fold:  6  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  6 , we have Error:  31.2404807368
+Percent of Zero Retweets predicted correctly:  0.542716357832
+Percent of Non-Zero Retweets predicted correctly:  0.172184051634
+----------- Test Regression Errors ------------
+For Fold Number:  6 , we have Error:  2.46306315467e+15
+Percent of Zero Retweets predicted correctly:  0.520295202952
+Percent of Non-Zero Retweets predicted correctly:  0.156211562116
+Naive Baseline Error:  23.5808897877
+-------- Fold:  7  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  7 , we have Error:  31.9913512299
+Percent of Zero Retweets predicted correctly:  0.541958770042
+Percent of Non-Zero Retweets predicted correctly:  0.169500937044
+----------- Test Regression Errors ------------
+For Fold Number:  7 , we have Error:  15.8003033367
+Percent of Zero Retweets predicted correctly:  0.540540540541
+Percent of Non-Zero Retweets predicted correctly:  0.157862407862
+Naive Baseline Error:  18.5015166835
+-------- Fold:  8  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  8 , we have Error:  30.4032910255
+Percent of Zero Retweets predicted correctly:  0.534002075406
+Percent of Non-Zero Retweets predicted correctly:  0.167900380491
+----------- Test Regression Errors ------------
+For Fold Number:  8 , we have Error:  30.5369059656
+Percent of Zero Retweets predicted correctly:  0.538607594937
+Percent of Non-Zero Retweets predicted correctly:  0.190506329114
+Naive Baseline Error:  34.5874620829
+-------- Fold:  9  ----------
+----------- Train Regression Errors ------------
+For Fold Number:  9 , we have Error:  31.3721779176
+Percent of Zero Retweets predicted correctly:  0.545133845196
+Percent of Non-Zero Retweets predicted correctly:  0.16967558968
+----------- Test Regression Errors ------------
+For Fold Number:  9 , we have Error:  28.9802831143
+Percent of Zero Retweets predicted correctly:  0.546261089987
+Percent of Non-Zero Retweets predicted correctly:  0.186945500634
+Naive Baseline Error:  30.6476238625
+==================== SUMMARY ==================
+Total Error:  33.961356858
+Percent Zero Retweets predicted correctly:  0.543559660145
+Percent Non-Zero Retweets predicted correctly:  0.170382747504
+Zero Errors:  1.78082917631
+Non Zero Errors:  167.080125176
+Naive Predictor Error:  35.6578009698
+Naive Predictor Zero Errors:  0.0
+Naive Predictor Non Zero Errors:  184.460548923
+Total Train Error:  30.2451564875
+Train Zero Errors:  1.60162408098
+Train Non-Zero Errors:  152.719808892
+Train Zero Retweet Percent Correct:  0.541961643031
+Train Non Zero Retweet Percent Correct:  0.170382747504
+============================================================
+                 SVC-SVR Hybrid                           
+============================================================
+-------- Fold:  0  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.177957532861
+Zero Predictor Errors:  0.0399239543726
+Non-Zero Predictor Errors:  0.7225
+Percent of Zero Retweets predicted correctly:  0.960076045627
+Percent of Non-Zero Retweets predicted correctly:  0.0703422053232
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.180899444164
+Zero Predictor Errors:  0.0507518796992
+Non-Zero Predictor Errors:  0.723237597911
+Percent of Zero Retweets predicted correctly:  0.949248120301
+Percent of Non-Zero Retweets predicted correctly:  0.0664160401003
+----------- Train Regression Errors ------------
+For Fold Number:  0 , we have Error:  122.479475995
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  400.0
+----------- Test Regression Errors ------------
+For Fold Number:  0 , we have Error:  9.61849418898
+Percent of Zero Retweets predicted correctly:  0.950501253133
+Percent of Non-Zero Retweets predicted correctly:  0.0645363408521
+Naive Baseline Error:  11.6680141486
+-------- Fold:  1  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.177957532861
+Zero Predictor Errors:  0.0399239543726
+Non-Zero Predictor Errors:  0.7225
+Percent of Zero Retweets predicted correctly:  0.960076045627
+Percent of Non-Zero Retweets predicted correctly:  0.0703422053232
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.174835775644
+Zero Predictor Errors:  0.0409062303335
+Non-Zero Predictor Errors:  0.720512820513
+Percent of Zero Retweets predicted correctly:  0.959093769666
+Percent of Non-Zero Retweets predicted correctly:  0.0685966016362
+----------- Train Regression Errors ------------
+For Fold Number:  1 , we have Error:  122.479475995
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  400.0
+----------- Test Regression Errors ------------
+For Fold Number:  1 , we have Error:  165.923193532
+Percent of Zero Retweets predicted correctly:  0.960981749528
+Percent of Non-Zero Retweets predicted correctly:  0.0673379483952
+Naive Baseline Error:  171.389590702
+-------- Fold:  2  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.177957532861
+Zero Predictor Errors:  0.0399239543726
+Non-Zero Predictor Errors:  0.7225
+Percent of Zero Retweets predicted correctly:  0.960076045627
+Percent of Non-Zero Retweets predicted correctly:  0.0703422053232
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.177867609904
+Zero Predictor Errors:  0.0478855721393
+Non-Zero Predictor Errors:  0.741239892183
+Percent of Zero Retweets predicted correctly:  0.952114427861
+Percent of Non-Zero Retweets predicted correctly:  0.0597014925373
+----------- Train Regression Errors ------------
+For Fold Number:  2 , we have Error:  122.479475995
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  400.0
+----------- Test Regression Errors ------------
+For Fold Number:  2 , we have Error:  33.4214249621
+Percent of Zero Retweets predicted correctly:  0.953980099502
+Percent of Non-Zero Retweets predicted correctly:  0.0597014925373
+Naive Baseline Error:  36.945932289
+-------- Fold:  3  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.177957532861
+Zero Predictor Errors:  0.0399239543726
+Non-Zero Predictor Errors:  0.7225
+Percent of Zero Retweets predicted correctly:  0.960076045627
+Percent of Non-Zero Retweets predicted correctly:  0.0703422053232
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.173319858514
+Zero Predictor Errors:  0.0411295273174
+Non-Zero Predictor Errors:  0.788571428571
+Percent of Zero Retweets predicted correctly:  0.958870472683
+Percent of Non-Zero Retweets predicted correctly:  0.0454266421117
+----------- Train Regression Errors ------------
+For Fold Number:  3 , we have Error:  122.479475995
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  400.0
+----------- Test Regression Errors ------------
+For Fold Number:  3 , we have Error:  8.22637695806
+Percent of Zero Retweets predicted correctly:  0.960712093309
+Percent of Non-Zero Retweets predicted correctly:  0.0441988950276
+Naive Baseline Error:  10.6932794341
+-------- Fold:  4  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.177957532861
+Zero Predictor Errors:  0.0399239543726
+Non-Zero Predictor Errors:  0.7225
+Percent of Zero Retweets predicted correctly:  0.960076045627
+Percent of Non-Zero Retweets predicted correctly:  0.0703422053232
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.193629929221
+Zero Predictor Errors:  0.0589711417817
+Non-Zero Predictor Errors:  0.752604166667
+Percent of Zero Retweets predicted correctly:  0.941028858218
+Percent of Non-Zero Retweets predicted correctly:  0.0595984943538
+----------- Train Regression Errors ------------
+For Fold Number:  4 , we have Error:  122.479475995
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  400.0
+----------- Test Regression Errors ------------
+For Fold Number:  4 , we have Error:  10.6476238625
+Percent of Zero Retweets predicted correctly:  0.943538268507
+Percent of Non-Zero Retweets predicted correctly:  0.0589711417817
+Naive Baseline Error:  13.3311425683
+-------- Fold:  5  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.177957532861
+Zero Predictor Errors:  0.0399239543726
+Non-Zero Predictor Errors:  0.7225
+Percent of Zero Retweets predicted correctly:  0.960076045627
+Percent of Non-Zero Retweets predicted correctly:  0.0703422053232
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.179979777553
+Zero Predictor Errors:  0.0441817050404
+Non-Zero Predictor Errors:  0.768194070081
+Percent of Zero Retweets predicted correctly:  0.95581829496
+Percent of Non-Zero Retweets predicted correctly:  0.0535158680772
+----------- Train Regression Errors ------------
+For Fold Number:  5 , we have Error:  122.479475995
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  400.0
+----------- Test Regression Errors ------------
+For Fold Number:  5 , we have Error:  4.02275025278
+Percent of Zero Retweets predicted correctly:  0.957062850031
+Percent of Non-Zero Retweets predicted correctly:  0.0528935905414
+Naive Baseline Error:  5.23255813953
+-------- Fold:  6  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.177957532861
+Zero Predictor Errors:  0.0399239543726
+Non-Zero Predictor Errors:  0.7225
+Percent of Zero Retweets predicted correctly:  0.960076045627
+Percent of Non-Zero Retweets predicted correctly:  0.0703422053232
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.167846309403
+Zero Predictor Errors:  0.0424354243542
+Non-Zero Predictor Errors:  0.747159090909
+Percent of Zero Retweets predicted correctly:  0.957564575646
+Percent of Non-Zero Retweets predicted correctly:  0.0547355473555
+----------- Train Regression Errors ------------
+For Fold Number:  6 , we have Error:  122.479475995
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  400.0
+----------- Test Regression Errors ------------
+For Fold Number:  6 , we have Error:  22.3554095046
+Percent of Zero Retweets predicted correctly:  0.958794587946
+Percent of Non-Zero Retweets predicted correctly:  0.0528905289053
+Naive Baseline Error:  23.5808897877
+-------- Fold:  7  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.177957532861
+Zero Predictor Errors:  0.0399239543726
+Non-Zero Predictor Errors:  0.7225
+Percent of Zero Retweets predicted correctly:  0.960076045627
+Percent of Non-Zero Retweets predicted correctly:  0.0703422053232
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.167846309403
+Zero Predictor Errors:  0.0454545454545
+Non-Zero Predictor Errors:  0.737142857143
+Percent of Zero Retweets predicted correctly:  0.954545454545
+Percent of Non-Zero Retweets predicted correctly:  0.0565110565111
+----------- Train Regression Errors ------------
+For Fold Number:  7 , we have Error:  122.479475995
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  400.0
+----------- Test Regression Errors ------------
+For Fold Number:  7 , we have Error:  16.6799797776
+Percent of Zero Retweets predicted correctly:  0.95515970516
+Percent of Non-Zero Retweets predicted correctly:  0.0540540540541
+Naive Baseline Error:  18.5015166835
+-------- Fold:  8  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.177957532861
+Zero Predictor Errors:  0.0399239543726
+Non-Zero Predictor Errors:  0.7225
+Percent of Zero Retweets predicted correctly:  0.960076045627
+Percent of Non-Zero Retweets predicted correctly:  0.0703422053232
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.182507583418
+Zero Predictor Errors:  0.0455696202532
+Non-Zero Predictor Errors:  0.726130653266
+Percent of Zero Retweets predicted correctly:  0.954430379747
+Percent of Non-Zero Retweets predicted correctly:  0.0689873417722
+----------- Train Regression Errors ------------
+For Fold Number:  8 , we have Error:  122.479475995
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  400.0
+----------- Test Regression Errors ------------
+For Fold Number:  8 , we have Error:  32.7522750253
+Percent of Zero Retweets predicted correctly:  0.956329113924
+Percent of Non-Zero Retweets predicted correctly:  0.0670886075949
+Naive Baseline Error:  34.5874620829
+-------- Fold:  9  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.169868554095
+Zero Predictor Errors:  0.0145569620253
+Non-Zero Predictor Errors:  0.786432160804
+Percent of Zero Retweets predicted correctly:  0.985443037975
+Percent of Non-Zero Retweets predicted correctly:  0.0537974683544
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.181496461072
+Zero Predictor Errors:  0.0209125475285
+Non-Zero Predictor Errors:  0.815
+Percent of Zero Retweets predicted correctly:  0.979087452471
+Percent of Non-Zero Retweets predicted correctly:  0.0468948035488
+----------- Train Regression Errors ------------
+For Fold Number:  9 , we have Error:  140.206655246
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  398.0
+----------- Test Regression Errors ------------
+For Fold Number:  9 , we have Error:  28.4858442872
+Percent of Zero Retweets predicted correctly:  0.979721166033
+Percent of Non-Zero Retweets predicted correctly:  0.0468948035488
+Naive Baseline Error:  30.6476238625
+==================== SUMMARY ==================
+Total Error:  33.2133372351
+Percent Zero Retweets predicted correctly:  0.957678088707
+Percent Non-Zero Retweets predicted correctly:  0.0568567403238
+Zero Errors:  0.301316427795
+Non Zero Errors:  170.331958785
+Naive Predictor Error:  35.6578009698
+Naive Predictor Zero Errors:  0.0
+Naive Predictor Non Zero Errors:  184.460548923
+Predictor Zero Retweets predicted correctly:  0.95618018061
+Predictor Non-Zero Retweets predicted correctly:  0.0580383888004
+Total Train Error:  124.25219392
+Train Zero Errors:  0.0
+Train Non-Zero Errors:  124.25219392
+Train Predictor Zero retweets Percent Correct:  0.962612744862
+Train Predictor Non-Zero retweets Percent Correct:  0.0686877316263
+Train Zero Retweet Percent Correct:  1.0
+Train Non Zero Retweet Percent Correct:  0.0568567403238
+============================================================
+              Logistic Regression-LSR Hybrid               
+============================================================
+-------- Fold:  0  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.172901921132
+Zero Predictor Errors:  0.0285171102662
+Non-Zero Predictor Errors:  0.7425
+Percent of Zero Retweets predicted correctly:  0.971482889734
+Percent of Non-Zero Retweets predicted correctly:  0.0652724968314
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.173825164224
+Zero Predictor Errors:  0.0357142857143
+Non-Zero Predictor Errors:  0.749347258486
+Percent of Zero Retweets predicted correctly:  0.964285714286
+Percent of Non-Zero Retweets predicted correctly:  0.0601503759398
+----------- Train Regression Errors ------------
+For Fold Number:  0 , we have Error:  30.4931640625
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  395.0
+----------- Test Regression Errors ------------
+For Fold Number:  0 , we have Error:  10.0171803941
+Percent of Zero Retweets predicted correctly:  0.965538847118
+Percent of Non-Zero Retweets predicted correctly:  0.0582706766917
+Naive Baseline Error:  11.6680141486
+-------- Fold:  1  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.172901921132
+Zero Predictor Errors:  0.0285171102662
+Non-Zero Predictor Errors:  0.7425
+Percent of Zero Retweets predicted correctly:  0.971482889734
+Percent of Non-Zero Retweets predicted correctly:  0.0652724968314
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.171298635675
+Zero Predictor Errors:  0.0295783511643
+Non-Zero Predictor Errors:  0.748717948718
+Percent of Zero Retweets predicted correctly:  0.970421648836
+Percent of Non-Zero Retweets predicted correctly:  0.0616740088106
+----------- Train Regression Errors ------------
+For Fold Number:  1 , we have Error:  30.4931640625
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  395.0
+----------- Test Regression Errors ------------
+For Fold Number:  1 , we have Error:  162.083375442
+Percent of Zero Retweets predicted correctly:  0.970421648836
+Percent of Non-Zero Retweets predicted correctly:  0.0610446821901
+Naive Baseline Error:  171.389590702
+-------- Fold:  2  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.172901921132
+Zero Predictor Errors:  0.0285171102662
+Non-Zero Predictor Errors:  0.7425
+Percent of Zero Retweets predicted correctly:  0.971482889734
+Percent of Non-Zero Retweets predicted correctly:  0.0652724968314
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.180394138454
+Zero Predictor Errors:  0.0404228855721
+Non-Zero Predictor Errors:  0.787061994609
+Percent of Zero Retweets predicted correctly:  0.959577114428
+Percent of Non-Zero Retweets predicted correctly:  0.0491293532338
+----------- Train Regression Errors ------------
+For Fold Number:  2 , we have Error:  30.4931640625
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  395.0
+----------- Test Regression Errors ------------
+For Fold Number:  2 , we have Error:  2.23301012557e+22
+Percent of Zero Retweets predicted correctly:  0.960199004975
+Percent of Non-Zero Retweets predicted correctly:  0.0478855721393
+Naive Baseline Error:  36.945932289
+-------- Fold:  3  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.172901921132
+Zero Predictor Errors:  0.0285171102662
+Non-Zero Predictor Errors:  0.7425
+Percent of Zero Retweets predicted correctly:  0.971482889734
+Percent of Non-Zero Retweets predicted correctly:  0.0652724968314
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.169782718545
+Zero Predictor Errors:  0.0337630448128
+Non-Zero Predictor Errors:  0.802857142857
+Percent of Zero Retweets predicted correctly:  0.966236955187
+Percent of Non-Zero Retweets predicted correctly:  0.0423572744015
+----------- Train Regression Errors ------------
+For Fold Number:  3 , we have Error:  30.4931640625
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  395.0
+----------- Test Regression Errors ------------
+For Fold Number:  3 , we have Error:  27.5219807984
+Percent of Zero Retweets predicted correctly:  0.967464702271
+Percent of Non-Zero Retweets predicted correctly:  0.0411295273174
+Naive Baseline Error:  10.6932794341
+-------- Fold:  4  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.172901921132
+Zero Predictor Errors:  0.0285171102662
+Non-Zero Predictor Errors:  0.7425
+Percent of Zero Retweets predicted correctly:  0.971482889734
+Percent of Non-Zero Retweets predicted correctly:  0.0652724968314
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.182507583418
+Zero Predictor Errors:  0.0420326223338
+Non-Zero Predictor Errors:  0.765625
+Percent of Zero Retweets predicted correctly:  0.957967377666
+Percent of Non-Zero Retweets predicted correctly:  0.0564617314931
+----------- Train Regression Errors ------------
+For Fold Number:  4 , we have Error:  30.4931640625
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  395.0
+----------- Test Regression Errors ------------
+For Fold Number:  4 , we have Error:  12.1835187058
+Percent of Zero Retweets predicted correctly:  0.961104140527
+Percent of Non-Zero Retweets predicted correctly:  0.055834378921
+Naive Baseline Error:  13.3311425683
+-------- Fold:  5  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.172901921132
+Zero Predictor Errors:  0.0285171102662
+Non-Zero Predictor Errors:  0.7425
+Percent of Zero Retweets predicted correctly:  0.971482889734
+Percent of Non-Zero Retweets predicted correctly:  0.0652724968314
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.177957532861
+Zero Predictor Errors:  0.0367143746111
+Non-Zero Predictor Errors:  0.789757412399
+Percent of Zero Retweets predicted correctly:  0.963285625389
+Percent of Non-Zero Retweets predicted correctly:  0.0485376477909
+----------- Train Regression Errors ------------
+For Fold Number:  5 , we have Error:  30.4931640625
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  395.0
+----------- Test Regression Errors ------------
+For Fold Number:  5 , we have Error:  4.75834175935
+Percent of Zero Retweets predicted correctly:  0.965152457996
+Percent of Non-Zero Retweets predicted correctly:  0.0479153702551
+Naive Baseline Error:  5.23255813953
+-------- Fold:  6  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.172901921132
+Zero Predictor Errors:  0.0285171102662
+Non-Zero Predictor Errors:  0.7425
+Percent of Zero Retweets predicted correctly:  0.971482889734
+Percent of Non-Zero Retweets predicted correctly:  0.0652724968314
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.167340748231
+Zero Predictor Errors:  0.0332103321033
+Non-Zero Predictor Errors:  0.786931818182
+Percent of Zero Retweets predicted correctly:  0.966789667897
+Percent of Non-Zero Retweets predicted correctly:  0.0461254612546
+----------- Train Regression Errors ------------
+For Fold Number:  6 , we have Error:  30.4931640625
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  395.0
+----------- Test Regression Errors ------------
+For Fold Number:  6 , we have Error:  23.1309403438
+Percent of Zero Retweets predicted correctly:  0.967404674047
+Percent of Non-Zero Retweets predicted correctly:  0.0442804428044
+Naive Baseline Error:  23.5808897877
+-------- Fold:  7  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.172901921132
+Zero Predictor Errors:  0.0285171102662
+Non-Zero Predictor Errors:  0.7425
+Percent of Zero Retweets predicted correctly:  0.971482889734
+Percent of Non-Zero Retweets predicted correctly:  0.0652724968314
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.16380182002
+Zero Predictor Errors:  0.0337837837838
+Non-Zero Predictor Errors:  0.768571428571
+Percent of Zero Retweets predicted correctly:  0.966216216216
+Percent of Non-Zero Retweets predicted correctly:  0.0497542997543
+----------- Train Regression Errors ------------
+For Fold Number:  7 , we have Error:  30.4931640625
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  395.0
+----------- Test Regression Errors ------------
+For Fold Number:  7 , we have Error:  17.4716885743
+Percent of Zero Retweets predicted correctly:  0.968673218673
+Percent of Non-Zero Retweets predicted correctly:  0.04914004914
+Naive Baseline Error:  18.5015166835
+-------- Fold:  8  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.172901921132
+Zero Predictor Errors:  0.0285171102662
+Non-Zero Predictor Errors:  0.7425
+Percent of Zero Retweets predicted correctly:  0.971482889734
+Percent of Non-Zero Retweets predicted correctly:  0.0652724968314
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.175429726997
+Zero Predictor Errors:  0.0303797468354
+Non-Zero Predictor Errors:  0.751256281407
+Percent of Zero Retweets predicted correctly:  0.969620253165
+Percent of Non-Zero Retweets predicted correctly:  0.0626582278481
+----------- Train Regression Errors ------------
+For Fold Number:  8 , we have Error:  30.4931640625
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  395.0
+----------- Test Regression Errors ------------
+For Fold Number:  8 , we have Error:  4.46827809775e+22
+Percent of Zero Retweets predicted correctly:  0.969620253165
+Percent of Non-Zero Retweets predicted correctly:  0.0626582278481
+Naive Baseline Error:  34.5874620829
+-------- Fold:  9  ----------
+-------- Train Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.167340748231
+Zero Predictor Errors:  0.0196202531646
+Non-Zero Predictor Errors:  0.753768844221
+Percent of Zero Retweets predicted correctly:  0.980379746835
+Percent of Non-Zero Retweets predicted correctly:  0.0620253164557
+-------- Test Classifier Errors  -----------
+Classifier Errors: Total Predictor Error:  0.179979777553
+Zero Predictor Errors:  0.0304182509506
+Non-Zero Predictor Errors:  0.77
+Percent of Zero Retweets predicted correctly:  0.969581749049
+Percent of Non-Zero Retweets predicted correctly:  0.0583016476553
+----------- Train Regression Errors ------------
+For Fold Number:  9 , we have Error:  92.9094103329
+Percent of Zero Retweets predicted correctly:  1.0
+Percent of Non-Zero Retweets predicted correctly:  398.0
+----------- Test Regression Errors ------------
+For Fold Number:  9 , we have Error:  1.76114733142e+26
+Percent of Zero Retweets predicted correctly:  0.971482889734
+Percent of Non-Zero Retweets predicted correctly:  0.0551330798479
+Naive Baseline Error:  30.6476238625
+==================== SUMMARY ==================
+Total Error:  1.76181746024e+25
+Percent Zero Retweets predicted correctly:  0.966706183734
+Percent Non-Zero Retweets predicted correctly:  0.0523292007155
+Zero Errors:  1.22175378321
+Non Zero Errors:  8.71228536008e+25
+Naive Predictor Error:  35.6578009698
+Naive Predictor Zero Errors:  0.0
+Naive Predictor Non Zero Errors:  184.460548923
+Predictor Zero Retweets predicted correctly:  0.965398232212
+Predictor Non-Zero Retweets predicted correctly:  0.0535150028182
+Total Train Error:  36.7347886895
+Train Zero Errors:  0.0
+Train Non-Zero Errors:  36.7347886895
+Train Predictor Zero retweets Percent Correct:  0.972372575444
+Train Predictor Non-Zero retweets Percent Correct:  0.0649477787939
+Train Zero Retweet Percent Correct:  1.0
+Train Non Zero Retweet Percent Correct:  0.0523292007155
