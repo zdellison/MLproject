@@ -31,10 +31,10 @@ def evaluatePredictor(examples, predictor):
     for x, y in examples:
         count+=1
         totalSquaredError+=(predictor(x,weights)-y)**2
-        if predictor(x,weights)>20:
-           print "Predicted ",predictor(x,weights)," when truth is ",y
-        if (predictor(x,weights)-y)**2>100:
-            print "Error Greater than 30, Predicted: ",predictor(x,weights)," when truth is ",y
+#        if predictor(x,weights)>20:
+#           print "Predicted ",predictor(x,weights)," when truth is ",y
+#        if (predictor(x,weights)-y)**2>100:
+#            print "Error Greater than 30, Predicted: ",predictor(x,weights)," when truth is ",y
         # if abs(predictor(x,weights)-y)>1:
         #     error += 1
             #print "--------ERROR------------"
@@ -62,38 +62,40 @@ def tweetFeatureExtractor(line,id_num):
     features = {}
 
     if userModel:    
-        if (numlistBuckets)**listExp*listStep<=line['user_listed']:
-            features['list_bucket_MAX']=1
-        else:
-            features['list_bucket_'+str((int)((line['user_listed']/listStep)**(1/(listExp+0.0))))]=1
+        if not line['user_listed']<0:
+            if (numlistBuckets)**listExp*listStep<=line['user_listed']:
+                features['list_bucket_MAX']=1
+            else:
+                features['list_bucket_'+str((int)((line['user_listed']/listStep)**(1/(listExp+0.0))))]=1
     
     
-    
-        if (numfriendBuckets)**friendExp*friendStep<=line['user_friends']:
-            features['friend_bucket_MAX']=1
-        else:
-            features['friend_bucket_'+str((int)((line['user_friends']/friendStep)**(1/(friendExp+0.0))))]=1
-    
-    
-    
-        if (followerBuckets)**followerExp*followerStep<line['user_followers']:
-            features['follower_bucket_MAX']=1
-        else:
-            features['follower_bucket_'+str((int)((line['user_followers']/followerStep)**(1/(followerExp+0.0))))]=1
+        if not line['user_friends']<0:
+            if (numfriendBuckets)**friendExp*friendStep<=line['user_friends']:
+                features['friend_bucket_MAX']=1
+            else:
+                features['friend_bucket_'+str((int)((line['user_friends']/friendStep)**(1/(friendExp+0.0))))]=1
     
     
-                
-        if (favBuckets)**favExp*favStep<line['user_favourites']:
-            features['fav_bucket_MAX']=1
-        else:
-            features['fav_bucket_'+str((int)((line['user_favourites']/favStep)**(1/(favExp+0.0))))]=1
+        if not line['user_followers']<0:
+            if (followerBuckets)**followerExp*followerStep<line['user_followers']:
+                features['follower_bucket_MAX']=1
+            else:
+                features['follower_bucket_'+str((int)((line['user_followers']/followerStep)**(1/(followerExp+0.0))))]=1
+    
+    
+        if not line['user_favourites']<0:
+            if (favBuckets)**favExp*favStep<line['user_favourites']:
+                features['fav_bucket_MAX']=1
+            else:
+                features['fav_bucket_'+str((int)((line['user_favourites']/favStep)**(1/(favExp+0.0))))]=1
        
                 
     
-        if (statusBuckets)**stExp*statusStep<line['user_statuses_count']:
-            features['user_statuses_count_MAX']=1
-        else:
-            features['user_statuses_count_'+str((int)((line['user_statuses_count']/statusStep)**(1/(stExp+0.0))))]=1
+        if not line['user_statuses_count']<0:
+            if (statusBuckets)**stExp*statusStep<line['user_statuses_count']:
+                features['user_statuses_count_MAX']=1
+            else:
+                features['user_statuses_count_'+str((int)((line['user_statuses_count']/statusStep)**(1/(stExp+0.0))))]=1
 
     if languageModel:    
         text = TextBlob(line['text'])
