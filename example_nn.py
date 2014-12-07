@@ -68,20 +68,20 @@ class NN:
             sum = 0.0
             for i in range(self.ni):
                 sum = sum + self.ai[i] * self.wi[i][j]
-            print "sum"
-            print sum
-            print "sigmoid(sum)"
-            print sigmoid(sum)
+            # print "sum"
+            # print sum
+            # print "sigmoid(sum)"
+            # print sigmoid(sum)
             self.ah[j] = sigmoid(sum)
-        print "input"
-        print self.ai
-        print ""
-        print "hidden activations"
-        print self.ah
-        print ""
-        print "wi"
-        print self.wi
-        print ""
+        # print "input"
+        # print self.ai
+        # print ""
+        # print "hidden activations"
+        # print self.ah
+        # print ""
+        # print "wi"
+        # print self.wi
+        # print ""
         
         for k in range(self.no):
             sum = 0.0
@@ -89,15 +89,15 @@ class NN:
                 sum = sum + self.ah[j] * self.wo[j][k]
             self.ao[k] = sigmoid(sum)
     
-        print "output activations"
-        print self.ao
-        print ""
-        print "wo"
-        print self.wo
-        print ""
-        print ""
-        print ""
-        print ""
+        # print "output activations"
+        # print self.ao
+        # print ""
+        # print "wo"
+        # print self.wo
+        # print ""
+        # print ""
+        # print ""
+        # print ""
         return self.ao[:]
 
 
@@ -177,7 +177,7 @@ def demo():
     ]
 
     # create a network with two input, two hidden, and one output nodes
-    n = NN(2, 2, 1)
+    n = NN(2, 8, 1)
     # train it with some patterns
     n.train(pat)
     # test it

@@ -137,13 +137,16 @@ def predictor(feat,W,b,y):
             activations[l]=sigmoid(z[l])
                     
             #compute final activation (hypothesis)
-    z[numLevels]=np.matrix(W[numLevels]*activations[numLevels-1]+np.matrix(b[numLevels]))
+    if numLevels>0:
+        z[numLevels]=np.matrix(W[numLevels]*activations[numLevels-1]+np.matrix(b[numLevels]))
+    else:
+        z[numLevels]=np.matrix(W[numLevels]*features+np.matrix(b[numLevels]))
+    #z[numLevels]=np.matrix(W[numLevels]*activations[numLevels-1]+np.matrix(b[numLevels]))
     activations[numLevels]=sigmoid(z[numLevels])
     hypothesis=activations[numLevels]
     print "Predicted ",hypothesis, " when truth is ",y, " for features: ",features
     print hypothesis 
-    quit()
-    print ""
+
     if hypothesis<0: 
         return 0
     else:
@@ -201,7 +204,10 @@ def learnPredictor(trainExamples, testExamples, featureExtractor):
                     activations[l]=sigmoid(z[l])
                     
             #compute final activation (hypothesis)
-            z[numLevels]=np.matrix(W[numLevels]*activations[numLevels-1]+np.matrix(b[numLevels]))
+            if numLevels>0:
+                z[numLevels]=np.matrix(W[numLevels]*activations[numLevels-1]+np.matrix(b[numLevels]))
+            else:
+                z[numLevels]=np.matrix(W[numLevels]*features+np.matrix(b[numLevels]))
             activations[numLevels]=sigmoid(z[numLevels])
         
             #################
@@ -215,7 +221,7 @@ def learnPredictor(trainExamples, testExamples, featureExtractor):
                 
                 delta[l-1]=np.multiply(W[l].T*np.matrix(delta[l]),dsigmoid(z[l-1]))
 
-
+            
             ##################
             #compute all gradients W_l and gradients b_l
             gradW =[]
@@ -224,7 +230,8 @@ def learnPredictor(trainExamples, testExamples, featureExtractor):
                     gradW.append(delta[l]*features.T)
                 else:
                     gradW.append(delta[l]*activations[l-1].T)
-            
+            print "gradW,delta[l],features.T"
+            print gradW
             #calculate gradb
             gradb = [delta[i] for i in range(0,numLevels+1)]
             
@@ -242,10 +249,13 @@ def learnPredictor(trainExamples, testExamples, featureExtractor):
         
         m=len(trainExamples)
         #update all levels of W
+        print "detlaW"
+        print deltaW
+        print ""
         for l in range(numLevels+1):
             W[l]-=learningRate*((1.0/m)*deltaW[l]+lambdaDecay*W[l])
             
-
+   
        
         #update all levels of b
         b=[b[l]-learningRate*((1.0/m)*deltab[l]) for l in range(numLevels+1)]
@@ -253,7 +263,6 @@ def learnPredictor(trainExamples, testExamples, featureExtractor):
         print 'Iteration number: '+str(iternum)+', train mean squared error = '+str(evaluatePredictor(trainExamples,predictor))+', test error = '+str(evaluatePredictor(testExamples,predictor))
 
     return (W,b)
-
 
 
 secsInDay = 24*60*60
@@ -294,30 +303,29 @@ json_data_test = open(testfile)
 test_data = json.loads(json_data_test.readline())
 #################
 #neural network costants
-numLevels=2
+numLevels=1
 numNeuronsPerLevel = 2#24+followerBuckets+favBuckets+numfriendBuckets+statusBuckets+numlistBuckets
 
-#b=[np.random.normal(0,.1,numNeuronsPerLevel) for i in range(numLevels)]
-#b.append(np.random.normal(0,.1))
-b=[np.ones((numNeuronsPerLevel,1)) for i in range(numLevels)]
+b=[np.random.normal(0,2.4,(numNeuronsPerLevel,1)) for i in range(numLevels)]
+b.append(np.random.normal(0,2.4))
 
-b.append(np.ones(1))
-for i,v in enumerate(b):
-    
-    b[i]=b[i]*0.5
+# b=[np.ones((numNeuronsPerLevel,1)) for i in range(numLevels)]
 
-#W = [np.random.normal(0,.1,(numNeuronsPerLevel, numNeuronsPerLevel)) for k in range(numLevels)]
-#W.append(np.matrix(np.random.normal(0,.1,numNeuronsPerLevel)))
+# b.append(np.ones(1))
 
-W=[]
-W.append(np.matrix([[1.0,2.0],[1.0,1.0]]))
-W.append(np.matrix([[1.0,1.0],[2.0,1.0]]))
-W.append(np.matrix([[1.0,1.0]]))
-for i,w in enumerate(W):
-    W[i]=W[i]*.5
+ 
+W = [np.random.normal(0,2.4,(numNeuronsPerLevel, numNeuronsPerLevel)) for k in range(numLevels)]
+W.append(np.matrix(np.random.normal(0,2.4,(1,numNeuronsPerLevel))))
 
-lambdaDecay=0.1
-learningRate=0.1
+# W=[]
+# W.append(np.matrix([[1.0,2.0],[1.0,1.0]]))
+# W.append(np.matrix([[1.0,1.0],[2.0,1.0]]))
+# W.append(np.matrix([[1.0,1.0]]))
+# for i,w in enumerate(W):
+#     W[i]=W[i]*.5
+
+lambdaDecay=0.000001
+learningRate=0.9
 ##################
 
 
